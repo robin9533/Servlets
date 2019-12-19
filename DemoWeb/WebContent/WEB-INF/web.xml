@@ -1,0 +1,182 @@
+<web-app>
+  <display-name>DemoWeb</display-name>
+  <welcome-file-list>
+    <welcome-file>/myaccount/login.html</welcome-file>
+  </welcome-file-list>
+  
+   <context-param>
+  	  	<param-name>count</param-name>
+  	  	<param-value>12</param-value>
+  	 </context-param>
+  
+  <servlet>
+	  <servlet-name>Srv</servlet-name>
+  	  <servlet-class>com.abc.MySrv</servlet-class>
+  	  <load-on-startup>1</load-on-startup>
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>Srv</servlet-name>
+      <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+	  <servlet-name>Srv2</servlet-name>
+  	  <servlet-class>com.abc.SecondSrv</servlet-class>
+  	  <load-on-startup>1</load-on-startup>
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>Srv2</servlet-name>
+      <url-pattern>/srv2</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+	  <servlet-name>login</servlet-name>
+  	  <servlet-class>com.abc.HttpSrv</servlet-class>
+  	  <load-on-startup>1</load-on-startup>
+  	  
+  	  <init-param>
+  	  	<parameter-name>driver</parameter-name>
+  	  	<parameter-value>oracle</parameter-value>
+  	  </init-param>
+  	   <init-param>
+  	  	<parameter-name>password</parameter-name>
+  	  	<parameter-value>oracle123</parameter-value>
+  	  </init-param>
+  </servlet>
+  
+    <servlet-mapping>
+	  <servlet-name>login</servlet-name>
+      <url-pattern>/httpSrv</url-pattern>
+    </servlet-mapping>
+    
+    
+    
+     
+    <servlet>
+	  <servlet-name>sc</servlet-name>
+  	  <servlet-class>com.abc.DemoSconfig</servlet-class>
+  	  <load-on-startup>1</load-on-startup>
+  	  <init-param>
+  	  	<param-name>driver</param-name>
+  	  	<param-value>oracle</param-value>
+  	  </init-param>
+  	   <init-param>
+  	  	<param-name>password</param-name>
+  	  	<param-value>oracle123</param-value>
+  	  </init-param>
+  	  
+  </servlet>
+  
+    <servlet-mapping>
+	  <servlet-name>sc</servlet-name>
+      <url-pattern>/demoSc</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+	  <servlet-name>scxt</servlet-name>
+  	  <servlet-class>com.abc.DemoCtx</servlet-class>
+  	  <load-on-startup>1</load-on-startup>
+  	  
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>scxt</servlet-name>
+      <url-pattern>/demoCxt</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+	  <servlet-name>ss</servlet-name>
+  	  <servlet-class>com.abc.DemoSession</servlet-class>
+  	  <load-on-startup>1</load-on-startup>
+  	  
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>ss</servlet-name>
+      <url-pattern>/session</url-pattern>
+    </servlet-mapping>
+    
+<session-config>
+	<session-timeout>
+		15
+	 </session-timeout>
+</session-config>
+
+
+
+  <servlet>
+	  <servlet-name>rd2</servlet-name>
+  	  <servlet-class>com.abc.DemoReqDispacherStep2</servlet-class>
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>rd2</servlet-name>
+      <url-pattern>/ReqDispacherStep2</url-pattern>
+    </servlet-mapping>
+  <servlet>
+	  <servlet-name>rd1</servlet-name>
+  	  <servlet-class>com.abc.DemoReqDispacherStep1</servlet-class>
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>rd1</servlet-name>
+      <url-pattern>/ReqDispacherStep1</url-pattern>
+    </servlet-mapping>
+    
+    
+      <servlet>
+	  <servlet-name>rd3</servlet-name>
+  	  <servlet-class>com.abc.DemoRedirector</servlet-class>
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>rd3</servlet-name>
+      <url-pattern>/redirector</url-pattern>
+    </servlet-mapping>
+	     	
+	     	 
+      <servlet>
+	  <servlet-name>cookie</servlet-name>
+  	  <servlet-class>com.abc.DemoCookie</servlet-class>
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>cookie</servlet-name>
+      <url-pattern>/demoCookie</url-pattern>
+    </servlet-mapping>
+    
+    
+      <servlet>
+	  <servlet-name>RegTwo</servlet-name>
+  	  <servlet-class>com.abc.RegTwo</servlet-class>
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>RegTwo</servlet-name>
+      <url-pattern>/regSrvTwo</url-pattern>
+    </servlet-mapping>
+    
+      <servlet>
+	  <servlet-name>RegOne</servlet-name>
+  	  <servlet-class>com.abc.RegOne</servlet-class>
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>RegOne</servlet-name>
+      <url-pattern>/regSrvOne</url-pattern>
+    </servlet-mapping>
+     <servlet>
+	  <servlet-name>DemoSrv</servlet-name>
+  	  <servlet-class>com.abc.DemoSrv</servlet-class>
+  </servlet>
+    <servlet-mapping>
+	  <servlet-name>DemoSrv</servlet-name>
+      <url-pattern>/demoSrv/*</url-pattern>
+    </servlet-mapping>
+     	 
+    <filter>
+    	<filter-name>demoFilter</filter-name>
+    	<filter-class>com.abc.DemoFilter</filter-class>
+    </filter>
+    <filter-mapping>
+    	<filter-name>demoFilter</filter-name>
+    	 <url-pattern>/demoSrv/*</url-pattern>
+    <servlet-name>DemoSrv</servlet-name>
+    </filter-mapping>
+    <listener>
+    	<listener-class>com.abc.DemoListner</listener-class>
+    </listener>
+ </web-app>
